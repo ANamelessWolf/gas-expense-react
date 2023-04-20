@@ -4,7 +4,7 @@ import CarRow from "./CarRow";
 
 export default function CarsComponent() {
   const title = "Vehicles";
-  
+
   const loading = false;
 
   const cars = [
@@ -12,16 +12,13 @@ export default function CarsComponent() {
     { id: 2, model: "Corolla 2022", brand: "Toyota", tank_size: 42 },
   ];
 
-  if(loading) return <h1>Loading...</h1>
-  
+  if (loading) return <h1>Loading...</h1>;
 
   return (
     <div>
       <br />
       <h1>{title.toUpperCase()}</h1>
       <br />
-
-
 
       <div className="d-flex p-2 bd-highlight">
         <table className="table table-dark table-striped">
@@ -31,16 +28,22 @@ export default function CarsComponent() {
               <th scope="col">Model</th>
               <th scope="col">Brand</th>
               <th scope="col">Tank Size [l]</th>
+              {/* Actions */}
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
             {cars.map((item, index) => (
-              <CarRow key={index} car={item}/>
+              <CarRow
+                key={index}
+                car={item}
+                handleDelete={(id) => console.log(id)}
+              />
             ))}
           </tbody>
         </table>
       </div>
-        <h4>Vehicles({cars.length})</h4>
+      <h4>Vehicles({cars.length})</h4>
     </div>
   );
 }
