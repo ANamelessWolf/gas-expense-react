@@ -1,8 +1,10 @@
-import React from "react";
-
 function Card({ children, reverse }) {
   // Conditional Class
-  return <div className={`card ${reverse && "card reverse"}`}>{children}</div>;
+  return (
+  <div  className={`card ${reverse && "card reverse"}`}>
+    {children}
+</div>
+);
   // Conditional Style
   //   return (
   //     <div
@@ -17,4 +19,4 @@ function Card({ children, reverse }) {
   //   );
 }
 
-export default Card;
+export default Card

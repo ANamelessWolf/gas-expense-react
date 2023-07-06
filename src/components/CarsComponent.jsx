@@ -1,16 +1,15 @@
 import React from "react";
-
+import { useContext  } from "react";
 import CarRow from "./CarRow";
+import  CarContext  from "../context/CarContext";
 
 export default function CarsComponent() {
   const title = "Vehicles";
+  const {car } = useContext(CarContext)
 
   const loading = false;
 
-  const cars = [
-    { id: 1, model: "Ikon 2012", brand: "Ford", tank_size: 40 },
-    { id: 2, model: "Corolla 2022", brand: "Toyota", tank_size: 42 },
-  ];
+  const cars = car;
 
   if (loading) return <h1>Loading...</h1>;
 
