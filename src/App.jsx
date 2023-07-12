@@ -4,8 +4,8 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/HeaderComponent';
 import OverviewPage from './pages/OverviewPage';
-import CarForm from './components/CarForm';
 import { CarProvider } from "./context/CarContext";
+import AddGasEntryPage from './pages/AddGasEntryPage';
 
 function App() {
   return (
@@ -22,6 +22,9 @@ function App() {
           <Route 
           path='/overview'
           element={<OverviewPage/>}></Route>
+          <Route 
+          path='/log'
+          element={<AddGasEntryPage/>}></Route>
         </Routes>
       </Router>
     </CarProvider>

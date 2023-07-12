@@ -1,30 +1,128 @@
 {
-    "gas_types": [
-        { "id": 1, "gas_name": "PREMIUM" },
-        { "id": 2, "gas_name": "MAGNA" },
-        { "id": 99, "gas_name": "OTRA" }
-    ],
-    "cars": [
-        { "id": 1, "model" : "Ikon 2012", "brand": "Ford", "tank_size": 40 },
-        { "id": 2, "model" : "Corolla 2022", "brand": "Toyota", "tank_size": 42 }
-    ],
-    "gas_stations": [
-        { "id": 1, "station_name" : "Servicio Ermita", "location": "19.323965 -99.137626", "rating": 1 },
-        { "id": 2, "station_name" : "Hidrosina Tlalpan", "location": "19.323965 -99.137626", "rating": 2 },
-        { "id": 3, "station_name" : "Pemex Plutarco", "location": "19.323965 -99.137626", "rating": 3 },
-        { "id": 4, "station_name" : "BP Felix Cuevas", "location": "19.323965 -99.137626", "rating": 1 },
-        { "id": 5, "station_name" : "Pemex Tlalpan", "location": "19.323965 -99.137626", "rating": 4 },
-        { "id": 999, "station_name" : "Otra", "location": "", "rating": 0 }
-    ],
-    "gas_historic_prices": [
-        { "id" : 1, "f_med" : "08/25/2022", "p_magna" : "22.39", "p_premium" : "22.39" },
-        { "id" : 2, "f_med" : "09/17/2022", "p_magna" : "22.39", "p_premium" : "22.39" },
-        { "id" : 3, "f_med" : "10/06/2022", "p_magna" : "22.39", "p_premium" : "22.39" },
-        { "id" : 4, "f_med" : "11/06/2022", "p_magna" : "22.39", "p_premium" : "22.39" },
-        { "id" : 5, "f_med" : "12/08/2022", "p_magna" : "22.39", "p_premium" : "22.39" },
-        { "id" : 6, "f_med" : "12/30/2022", "p_magna" : "22.39", "p_premium" : "22.39" }        
-    ]    ,
-    "gas_drive_logging": [
-        { "id" : 1, "gas_type":  1, "gas_station": 1, "litros": 31.277, "costo": "700.29203", "distancia": 687, "f_ini": "08/01/2022", "f_fin": "08/25/2022"  }
-    ]
+  "gas_types": [
+    {
+      "id": 1,
+      "gas_name": "PREMIUM"
+    },
+    {
+      "id": 2,
+      "gas_name": "MAGNA"
+    },
+    {
+      "id": 99,
+      "gas_name": "OTRA"
+    }
+  ],
+  "cars": [
+    {
+      "id": 1,
+      "model": "Ikon 2012",
+      "brand": "Ford",
+      "tank_size": 40
+    },
+    {
+      "id": 2,
+      "model": "Corolla 2022",
+      "brand": "Toyota",
+      "tank_size": 42
+    }
+  ],
+  "gas_stations": [
+    {
+      "id": 1,
+      "station_name": "Servicio Ermita",
+      "location": "19.323965 -99.137626",
+      "rating": 1
+    },
+    {
+      "id": 2,
+      "station_name": "Hidrosina Tlalpan",
+      "location": "19.323965 -99.137626",
+      "rating": 2
+    },
+    {
+      "id": 3,
+      "station_name": "Pemex Plutarco",
+      "location": "19.323965 -99.137626",
+      "rating": 3
+    },
+    {
+      "id": 4,
+      "station_name": "BP Felix Cuevas",
+      "location": "19.323965 -99.137626",
+      "rating": 1
+    },
+    {
+      "id": 5,
+      "station_name": "Pemex Tlalpan",
+      "location": "19.323965 -99.137626",
+      "rating": 4
+    },
+    {
+      "id": 999,
+      "station_name": "Otra",
+      "location": "",
+      "rating": 0
+    }
+  ],
+  "gas_historic_prices": [
+    {
+      "id": 1,
+      "f_med": "08/25/2022",
+      "p_magna": "22.39",
+      "p_premium": "22.39"
+    },
+    {
+      "id": 2,
+      "f_med": "09/17/2022",
+      "p_magna": "22.39",
+      "p_premium": "22.39"
+    },
+    {
+      "id": 3,
+      "f_med": "10/06/2022",
+      "p_magna": "22.39",
+      "p_premium": "22.39"
+    },
+    {
+      "id": 4,
+      "f_med": "11/06/2022",
+      "p_magna": "22.39",
+      "p_premium": "22.39"
+    },
+    {
+      "id": 5,
+      "f_med": "12/08/2022",
+      "p_magna": "22.39",
+      "p_premium": "22.39"
+    },
+    {
+      "id": 6,
+      "f_med": "12/30/2022",
+      "p_magna": "22.39",
+      "p_premium": "22.39"
+    }
+  ],
+  "gas_drive_logging": [
+    {
+      "id": 1,
+      "gas_type": 1,
+      "gas_station": 1,
+      "litros": 31.277,
+      "costo": "700.29203",
+      "distancia": 687,
+      "f_ini": "08/01/2022",
+      "f_fin": "08/25/2022"
+    },
+    {
+      "id": 2,
+      "gas_type": 1,
+      "gas_station": 4,
+      "litros": 41,
+      "costo": 700,
+      "distancia": 650,
+      "f_ini": "2023-07-12T00:00:00.000Z",
+      "f_fin": "2023-07-28T00:00:00.000Z"
+    }
+  ]
 }
