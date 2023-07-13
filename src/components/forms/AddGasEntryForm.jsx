@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Inputbox from "../UI/Inputbox";
+import React, { useEffect, useState, useRef } from "react";
+import Input from "../UI/Input";
 import GasStationDropdown from "../UI/GasStationDropdown";
 import GasTypeDropdown from "../UI/GasTypeDropdown";
-import Http from "../../utils/Http";
+import GasLogEntry from "../../model/GasLogEntry";
 
 export default function AddGasEntryForm() {
   const [gas, setGas] = useState({
@@ -15,31 +15,32 @@ export default function AddGasEntryForm() {
     location: "",
     rating: 1,
   });
-  const [liters, setLiters] = useState("");
-  const [price, setPrice] = useState("");
-  const [km, setKm] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
+  const littersRef = useRef();
+  const priceRef = useRef();
+  const kmRef = useRef();
+  const startDateRef = useRef();
+  const endDateRef = useRef();
 
   //Form validation
+  const [validateFormFlag, setValidateFormFlag] = useState(0);
   const [formIsValid, setformIsValid] = useState(false);
   useEffect(() => {
     const identifier = setTimeout(() => {
       setformIsValid(
         gas.id != null &&
           gasType.id != null &&
-          liters.length > 0 &&
-          price.length > 0 &&
-          km.length > 0 &&
-          startDate.length > 0 &&
-          endDate.length > 0
+          littersRef.current.isValid() === true &&
+          priceRef.current.isValid() === true &&
+          kmRef.current.isValid() === true &&
+          startDateRef.current.isValid() === true &&
+          endDateRef.current.isValid() === true
       );
     }, 500);
     return () => {
       //Esta función se ejecuta en la segunda vez que se accede al useeffect
       clearTimeout(identifier);
     };
-  }, [gas, gasType, liters, price, km, startDate, endDate]);
+  }, [gas, gasType, validateFormFlag]);
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -47,13 +48,13 @@ export default function AddGasEntryForm() {
       id: null,
       gas_type: gasType.id,
       gas_station: gas.id,
-      litros: +liters,
-      costo: +price,
-      distancia: +km,
-      f_ini: new Date(startDate),
-      f_fin: new Date(endDate),
+      litros: +littersRef.current.getValue(),
+      costo: +priceRef.current.getValue(),
+      distancia: +kmRef.current.getValue(),
+      f_ini: new Date(startDateRef.current.getValue()),
+      f_fin: new Date(endDateRef.current.getValue()),
     };
-    Http.POST("gas_drive_logging", entry,(data)=>console.log(data));
+    GasLogEntry.add(entry);
   };
   return (
     <form className="form" onSubmit={submitHandler}>
@@ -65,36 +66,41 @@ export default function AddGasEntryForm() {
         label="Tipo de gasolina"
         selectionChanged={setGasType}
       ></GasTypeDropdown>
-      <Inputbox
+      <Input
+        ref={littersRef}
         label="Litros"
         type="number"
-        setValue={setLiters}
         errorMsg="Por favor proporcione un número de litros válido"
-      ></Inputbox>
-      <Inputbox
+        validateForm={setValidateFormFlag}
+      ></Input>
+      <Input
+        ref={priceRef}
         label="Costo (MXN)"
         type="number"
-        setValue={setPrice}
         errorMsg="Por favor introduzca un costo válido"
-      ></Inputbox>
-      <Inputbox
+        validateForm={setValidateFormFlag}
+      ></Input>
+      <Input
+        ref={kmRef}
         label="Kilometraje"
         type="number"
-        setValue={setKm}
         errorMsg="Por favor introduzca un kilometraje válido"
-      ></Inputbox>
-      <Inputbox
+        validateForm={setValidateFormFlag}
+      ></Input>
+      <Input
+        ref={startDateRef}
         label="Fecha Inicio"
         type="date"
-        setValue={setStartDate}
         errorMsg="Por favor introduzca una fecha de inicio válida"
-      ></Inputbox>
-      <Inputbox
+        validateForm={setValidateFormFlag}
+      ></Input>
+      <Input
+        ref={endDateRef}
         label="Fecha Fin"
         type="date"
-        setValue={setEndDate}
         errorMsg="Por favor introduzca una fecha de fin válida"
-      ></Inputbox>
+        validateForm={setValidateFormFlag}
+      ></Input>
 
       <button type="submit" className="btn btn-primary" disabled={!formIsValid}>
         Agregar

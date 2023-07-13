@@ -4,12 +4,10 @@ import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
 import NavBar from './components/NavBar';
 import Header from './components/HeaderComponent';
 import OverviewPage from './pages/OverviewPage';
-import { CarProvider } from "./context/CarContext";
 import AddGasEntryPage from './pages/AddGasEntryPage';
 
 function App() {
   return (
-    <CarProvider>
       <Router>
         <NavBar/>
         
@@ -27,7 +25,6 @@ function App() {
           element={<AddGasEntryPage/>}></Route>
         </Routes>
       </Router>
-    </CarProvider>
   );
 }
 

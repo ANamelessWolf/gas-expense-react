@@ -1,18 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Http from "../../utils/Http";
+import React, { useState, useContext } from "react";
+import AppContext from "../../context/AppContext";
+
 export default function GasTypeDropdown(props) {
-  const [gasTypes, setGasTypes] = useState([]);
+  const ctx = useContext(AppContext);
+
   const [selected, setSelected] = useState(null);
   const selectionChangeHandler = (event) => {
     const id = +event.target.value;
-    const gasType = gasTypes.filter((item) => item.id === id)[0];
+    const gasType = ctx.catalogue.GAS_TYPE.filter((item) => item.id === id)[0];
     setSelected(gasType);
     if (props.selectionChanged != null) {
       props.selectionChanged(gasType);
     }
   };
-
-  useEffect(() => Http.GET("gas_types", (data) => setGasTypes(() => data)), []);
 
   return (
     <div className="mb-3">
@@ -26,7 +26,7 @@ export default function GasTypeDropdown(props) {
         value={selected?.id}
       >
         <option value="0">Selecciona un tipo de gasolina</option>
-        {gasTypes.map((item) => {
+        {ctx.catalogue.GAS_TYPE.map((item) => {
           return (
             <option key={item.id} value={item.id}>
               {item.gas_name}

@@ -1,35 +1,18 @@
-import React, { useEffect, useState } from "react";
-import Http from "../../utils/Http";
+import React, { useContext, useState } from "react";
+import AppContext from "../../context/AppContext";
+
 export default function GasStationDropdown(props) {
-  const [gasStations, setGasStations] = useState([]);
+  const ctx = useContext(AppContext);
+
   const [selected, setSelected] = useState(null);
   const selectionChangeHandler = (event) => {
     const id = +event.target.value;
-    const gasStation = gasStations.filter((item) => item.id === id)[0];
+    const gasStation = ctx.fuel_sation.data.filter((item) => item.id === id)[0];
     setSelected(gasStation);
     if (props.selectionChanged != null) {
       props.selectionChanged(gasStation);
     }
   };
-
-  useEffect(
-    () =>
-      Http.GET("gas_stations", (data) =>
-        setGasStations(() => {
-          const compare = (a, b) => {
-            if (a.station_name < b.station_name) {
-              return -1;
-            }
-            if (a.station_name > b.station_name) {
-              return 1;
-            }
-            return 0;
-          };
-          return data.sort(compare);
-        })
-      ),
-    []
-  );
 
   return (
     <div className="mb-3">
@@ -43,7 +26,7 @@ export default function GasStationDropdown(props) {
         value={selected?.id}
       >
         <option value="0">Selecciona una gasolinera</option>
-        {gasStations.map((item) => {
+        {ctx.fuel_sation.data.map((item) => {
           return (
             <option key={item.id} value={item.id}>
               {item.station_name}
