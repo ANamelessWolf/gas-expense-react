@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useRef } from "react";
-import Input from "../UI/Input";
+import Input from "../shared/Input";
 import GasStationDropdown from "../UI/GasStationDropdown";
 import GasTypeDropdown from "../UI/GasTypeDropdown";
 import GasLogEntry from "../../model/GasLogEntry";

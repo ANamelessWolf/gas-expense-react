@@ -5,7 +5,7 @@ export default class OverviewPage extends Component {
   render() {
     return (
       <div>
-        <CarsComponent/>
+        Index
       </div>
     )
   }

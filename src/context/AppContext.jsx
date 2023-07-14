@@ -16,7 +16,7 @@ const AppContext = createContext({
     data: [],
     refesh: () => {},
     add: (data) => {},
-  },
+  }
 });
 
 //Create Provider
@@ -47,7 +47,7 @@ export const AppProvider = (props) => {
         },
         gas_log: {
           data: gasLog,
-          refesh: () => GasLogEntry.refresh(setGasStations),
+          refesh: () => GasLogEntry.refresh(setGasLog),
           add: GasLogEntry.add,
         },
       }}
